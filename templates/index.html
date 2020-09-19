@@ -5,20 +5,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Mars Data</title>
+  <title>Mission to Mars</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 
 <body>
+  <!-- Page Title-->
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>Let's travel to Mars!</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data!</a></p>
     </div>
-    <h2>Heading2</h2>
-    <h3>Heading3</h3>
+  
+    <div class="container-fluid">
+      <h2><strong>Latest Mars News</strong></h2>
+      <h3><strong>{{mars.mars_news_title}}</strong></h3>
+      <p>{{mars.mars_news_paragraph}}</p>
+    </div>
+    <div class="container-fluid">
+      <h2>Featured Mars Image</h2>
+      <p>{{mars_featured_image}}</p>
+      <h2>Mars Facts</h2>
+    </div>
+    <div class="container-fluid">
+      <h2>Mars Hemispheres</h2>
+    </div>
+
   </div>
-  </div>
+
 </body>
 
 </html>
