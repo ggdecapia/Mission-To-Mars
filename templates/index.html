@@ -23,12 +23,13 @@
       <p>{{mars.mars_news_paragraph}}</p>
     </div>
     <div class="container-fluid">
-      <h2>Featured Mars Image</h2>
-      <p>{{mars_featured_image}}</p>
-      <h2>Mars Facts</h2>
+      <h2><strong>Featured Mars Image</strong></h2>
+      <img src="{{mars.mars_featured_image}}" style="max-width:100%; max-height: auto;"/>
+      <h2><strong>Mars Facts</strong></h2>
+      <p>{{mars.mars_facts | safe}}</p>
     </div>
     <div class="container-fluid">
-      <h2>Mars Hemispheres</h2>
+      <h2><strong>Mars Hemispheres</strong></h2>
     </div>
 
   </div>

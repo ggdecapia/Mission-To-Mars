@@ -29,7 +29,10 @@ def scrape_info():
 
     latest_news = mars_news_soup.find('div', class_="bottom_gradient")
     news_title = latest_news.find('h3').text
-    news_p = mars_news_soup.find('div', class_="rollover_description_inner").text
+    
+    news_div = mars_news_soup.find('div', class_="image_and_description_container")
+    news_div_inner = news_div.find('div', class_="rollover_description_inner")
+    news_p = news_div.find('div', class_="rollover_description_inner").text
 
     #################################################
     # Scrape JPL Mars Space Images - Featured Image #
@@ -53,7 +56,7 @@ def scrape_info():
     image_div = full_image_page.find('div', id="fancybox-lock")
     img_class = image_div.find('img')
     src = img_class.get('src')
-    featured_image_url = url + src
+    featured_image_url = 'https://www.jpl.nasa.gov' + src
 
     ###################################
     # Scrape Space Facts - Mars Facts #
@@ -61,7 +64,8 @@ def scrape_info():
     mars_df = pd.read_html("https://space-facts.com/mars/")[0]
     mars_df = mars_df.rename(columns={0:"Description", 
                                       1:"Value"})
-    mars_df = mars_df.set_index("Description") 
+    mars_df.set_index("Description", inplace=True) 
+    mars_html = mars_df.to_html(classes="table table-striped")
     
     ###########################
     # Scrape Mars Hemispheres #
@@ -116,16 +120,20 @@ def scrape_info():
     #     "max_temp": max_temp
     # }
 
-    
+    print(news_title)
+    print(news_p)
+    print(featured_image_url)
+    print(mars_html)
+    print(hemisphere_urls)
     # Store scraped data into a dictionary
     scraped_mars_data = {
         "mars_news_title": news_title,
         "mars_news_paragraph": news_p,
         "mars_featured_image": featured_image_url,
-#        "mars_facts": mars_df,
+        "mars_facts": mars_html,
         "mars_hemispheres": hemisphere_urls
     }
-
+    
     # Close the browser after scraping
     browser.quit()
 
