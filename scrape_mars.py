@@ -13,9 +13,6 @@ def init_browser():
 def scrape_info():
     browser = init_browser()
 
-    # Visit visitcostarica.herokuapp.com
-    # url = "https://visitcostarica.herokuapp.com/"
-    
     #########################
     # Scrape NASA Mars News #
     #########################
@@ -82,9 +79,9 @@ def scrape_info():
     hemispheres = []
     hemispheres = hemispheres_div
     hemisphere_urls = []
-    hemisphere = {}
-
+    
     for i in range(len(hemispheres)):
+        hemisphere = {}
         a = hemispheres[i].find('a')
         href = a.get('href')
         url = 'https://astrogeology.usgs.gov' + href
@@ -99,32 +96,6 @@ def scrape_info():
         
         hemisphere_urls.append(hemisphere)
 
-    
-    # Get the average temps
-    # avg_temps = soup.find('div', id='weather')
-
-    # Get the min avg temp
-    # min_temp = avg_temps.find_all('strong')[0].text
-
-    # Get the max avg temp
-    # max_temp = avg_temps.find_all('strong')[1].text
-
-    # BONUS: Find the src for the sloth image
-    # relative_image_path = soup.find_all('img')[2]["src"]
-    # sloth_img = url + relative_image_path
-
-    # Store data in a dictionary
-    # costa_data = {
-    #     "sloth_img": sloth_img,
-    #     "min_temp": min_temp,
-    #     "max_temp": max_temp
-    # }
-
-    print(news_title)
-    print(news_p)
-    print(featured_image_url)
-    print(mars_html)
-    print(hemisphere_urls)
     # Store scraped data into a dictionary
     scraped_mars_data = {
         "mars_news_title": news_title,
@@ -134,9 +105,10 @@ def scrape_info():
         "mars_hemispheres": hemisphere_urls
     }
     
+    print('hemisphere_urls')
+    print(hemisphere_urls)
     # Close the browser after scraping
     browser.quit()
 
     # Return results
-    #return costa_data
     return scraped_mars_data
