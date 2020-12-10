@@ -19,7 +19,7 @@ def scrape_info():
     url = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url)
 
-    time.sleep(2)
+    time.sleep(5)
 
     html = browser.html
     mars_news_soup = bs(html, "html.parser")
@@ -96,6 +96,9 @@ def scrape_info():
         
         hemisphere_urls.append(hemisphere)
 
+    print('hemisphere_urls')
+    print(hemisphere_urls)
+    
     # Store scraped data into a dictionary
     scraped_mars_data = {
         "mars_news_title": news_title,
@@ -105,8 +108,7 @@ def scrape_info():
         "mars_hemispheres": hemisphere_urls
     }
     
-    print('hemisphere_urls')
-    print(hemisphere_urls)
+
     # Close the browser after scraping
     browser.quit()
 
