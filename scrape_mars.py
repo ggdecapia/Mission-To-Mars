@@ -34,7 +34,7 @@ def scrape_info():
     #################################################
     # Scrape JPL Mars Space Images - Featured Image #
     #################################################
-    url = 'https://www.jpl.nasa.gov/spaceimages/'
+    url = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(url)
     time.sleep(1)
 
